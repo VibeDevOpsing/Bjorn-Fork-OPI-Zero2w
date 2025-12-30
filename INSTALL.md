@@ -11,50 +11,42 @@
 - [Manual Install](#-manual-install)
 - [Configuration](#-configuration)
 - [Testing](#-testing)
-- [Legacy Raspberry Pi Installation](#-legacy-raspberry-pi-installation)
 - [License](#-license)
 
 ---
 
 ## 📌 Prerequisites
 
-### 📋 Orange Pi Zero 2W (64-bit) - **Primary Platform**
+### Hardware Requirements
 
-<p align="center">
-  <strong>Recommended Hardware</strong>
-</p>
-
-| Specification | Requirement |
-|--------------|-------------|
+| Component | Requirement |
+|-----------|-------------|
 | **Board** | Orange Pi Zero 2W |
 | **RAM** | 1GB minimum, 4GB recommended |
 | **Storage** | 16GB+ microSD (Class 10) |
+| **Display** | 2.13-inch e-Paper HAT (V2/V3/V4) or 2.7-inch |
+
+### Software Requirements
+
+| Component | Requirement |
+|-----------|-------------|
 | **OS** | Debian 12 (bookworm) or Armbian |
 | **Kernel** | Linux 6.1.31-sun50iw9 or compatible |
-| **Display** | 2.13-inch e-Paper HAT (V2/V3/V4) |
+| **Python** | Python 3.10+ |
 
 **Download OS Images:**
 - [Official Orange Pi Debian](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-2W.html)
 - [Armbian for Orange Pi Zero 2W](https://www.armbian.com/orange-pi-zero-2w/) (Recommended)
 
-### 📋 Raspberry Pi Zero W/W2 (Legacy Support)
-
-If you're using a Raspberry Pi, use the backup installation files:
-- `install_bjorn_rpi_backup.sh`
-- `requirements_rpi_backup.txt`
-- `resources/waveshare_epd/epdconfig_rpi_backup.py`
-
-See [Legacy Raspberry Pi Installation](#-legacy-raspberry-pi-installation) section below.
-
 ---
 
-## ⚡ Quick Install (Orange Pi Zero 2W)
+## ⚡ Quick Install
 
 The fastest way to install Bjorn:
 
 ```bash
 # Download and run the installer
-wget https://raw.githubusercontent.com/infinition/Bjorn/refs/heads/main/install_bjorn.sh
+wget https://raw.githubusercontent.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/refs/heads/main/install_bjorn.sh
 sudo chmod +x install_bjorn.sh
 sudo ./install_bjorn.sh
 
@@ -67,7 +59,7 @@ sudo ./install_bjorn.sh
 
 ---
 
-## 🧰 Manual Install (Orange Pi Zero 2W)
+## 🧰 Manual Install
 
 ### Step 1: Enable SPI & I2C
 
@@ -119,7 +111,7 @@ sudo nmap --script-updatedb
 ```bash
 # Clone the Bjorn repository
 cd /home/bjorn
-git clone https://github.com/infinition/Bjorn.git
+git clone https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork.git
 cd Bjorn
 
 # Install Python dependencies
@@ -128,13 +120,13 @@ sudo pip3 install -r requirements.txt --break-system-packages
 
 ### Step 4: Configure E-Paper Display Type
 
-Choose your e-Paper HAT version by modifying the configuration file:
+Choose your e-Paper HAT version:
 
 ```bash
 sudo nano /home/bjorn/Bjorn/config/shared_config.json
 ```
 
-Locate the `epd_type` line and change the value:
+Set the `epd_type` value:
 - For 2.13 V1: `"epd_type": "epd2in13"`
 - For 2.13 V2: `"epd_type": "epd2in13_V2"`
 - For 2.13 V3: `"epd_type": "epd2in13_V3"`
@@ -161,7 +153,7 @@ echo "fs.file-max = 2097152" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 ```
 
-### Step 6: Reload Systemd and Apply Changes
+### Step 6: Reload Systemd
 
 ```bash
 sudo systemctl daemon-reload
@@ -170,14 +162,11 @@ sudo systemctl daemon-reload
 ### Step 7: Configure PAM
 
 ```bash
-# Add pam_limits to session files
 echo "session required pam_limits.so" | sudo tee -a /etc/pam.d/common-session
 echo "session required pam_limits.so" | sudo tee -a /etc/pam.d/common-session-noninteractive
 ```
 
-### Step 8: Configure Services
-
-#### 8.1: Bjorn Service
+### Step 8: Configure Bjorn Service
 
 Create the service file:
 
@@ -185,11 +174,11 @@ Create the service file:
 sudo nano /etc/systemd/system/bjorn.service
 ```
 
-Add the following content:
+Add:
 
 ```ini
 [Unit]
-Description=Bjorn Service (Orange Pi Zero 2W)
+Description=Bjorn Service
 DefaultDependencies=no
 Before=basic.target
 After=local-fs.target network.target
@@ -216,21 +205,9 @@ sudo systemctl daemon-reload
 sudo systemctl enable bjorn.service
 ```
 
-#### 8.2: USB Gadget Configuration (Optional)
+### Step 9: USB Gadget Configuration (Optional)
 
-For USB networking via the USB-C port:
-
-```bash
-sudo nano /usr/local/bin/usb-gadget.sh
-```
-
-Add the USB gadget script (see install_bjorn.sh for full content).
-
-```bash
-sudo chmod +x /usr/local/bin/usb-gadget.sh
-```
-
-Configure the network interface:
+For USB networking:
 
 ```bash
 sudo tee -a /etc/network/interfaces << EOF
@@ -241,14 +218,7 @@ iface usb0 inet static
 EOF
 ```
 
-Enable services:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable usb-gadget.service
-```
-
-### Step 9: Reboot
+### Step 10: Reboot
 
 ```bash
 sudo reboot
@@ -264,16 +234,16 @@ Key configuration options in `/home/bjorn/Bjorn/config/shared_config.json`:
 
 ```json
 {
-    "epd_type": "epd2in13_V4",      // Your e-Paper display version
-    "manual_mode": false,            // Auto-scan mode
-    "websrv": true,                  // Enable web interface
-    "scan_interval": 180,            // Seconds between scans
-    "nmap_scan_aggressivity": "-T3", // Nmap timing (-T1 to -T5)
-    "startup_delay": 10              // Startup delay in seconds
+    "epd_type": "epd2in13_V4",
+    "manual_mode": false,
+    "websrv": true,
+    "scan_interval": 120,
+    "nmap_scan_aggressivity": "-T3",
+    "startup_delay": 10
 }
 ```
 
-### Recommended Settings for Orange Pi 4GB RAM
+### Recommended Settings for 4GB RAM
 
 ```json
 {
@@ -298,10 +268,6 @@ pip3 install pytest pytest-timeout --break-system-packages
 
 # Run all tests
 python3 -m pytest tests/test_orangepi_migration.py -v
-
-# Run specific test categories
-python3 -m pytest tests/test_orangepi_migration.py::TestDependencyImports -v
-python3 -m pytest tests/test_orangepi_migration.py::TestEPDConfig -v
 ```
 
 ### Quick Hardware Test
@@ -322,49 +288,9 @@ python3 -c "from resources.waveshare_epd import epdconfig; print('OK')"
 
 ---
 
-## 🍓 Legacy Raspberry Pi Installation
-
-For Raspberry Pi Zero W/W2 users:
-
-### Quick Install (Raspberry Pi)
-
-```bash
-wget https://raw.githubusercontent.com/infinition/Bjorn/refs/heads/main/install_bjorn_rpi_backup.sh
-sudo chmod +x install_bjorn_rpi_backup.sh
-sudo ./install_bjorn_rpi_backup.sh
-```
-
-### Manual Setup
-
-1. Use `requirements_rpi_backup.txt` instead of `requirements.txt`
-2. Copy `epdconfig_rpi_backup.py` to `epdconfig.py`:
-   ```bash
-   cp resources/waveshare_epd/epdconfig_rpi_backup.py resources/waveshare_epd/epdconfig.py
-   ```
-3. Enable SPI/I2C via `raspi-config`:
-   ```bash
-   sudo raspi-config
-   # Navigate to Interface Options > SPI > Enable
-   # Navigate to Interface Options > I2C > Enable
-   ```
-
-### Prerequisites for Raspberry Pi
-
-**32-bit (RPi Zero W):**
-- System: 32-bit
-- Kernel version: 6.6
-- Debian version: 12 (bookworm) '2024-10-22-raspios-bookworm-armhf-lite'
-
-**64-bit (RPi Zero W2):**
-- System: 64-bit
-- Kernel version: 6.6
-- Debian version: 12 (bookworm) '2024-10-22-raspios-bookworm-arm64-lite'
-
----
-
 ## 🔗 PC Configuration (USB Gadget)
 
-If using USB gadget mode, configure your PC with:
+If using USB gadget mode, configure your PC:
 
 | Setting | Value |
 |---------|-------|

@@ -14,24 +14,17 @@
   <img src="https://github.com/user-attachments/assets/1b490f07-f28e-4418-8d41-14f1492890c6" alt="bjorn_epd-removebg-preview" width="150">
 </p>
 
-Bjorn is a « Tamagotchi like » sophisticated, autonomous network scanning, vulnerability assessment, and offensive security tool designed to run on a **Orange Pi Zero 2W** (or Raspberry Pi) equipped with a 2.13-inch e-Paper HAT. This document provides a detailed explanation of the project.
+Bjorn is a « Tamagotchi like » sophisticated, autonomous network scanning, vulnerability assessment, and offensive security tool designed to run on **Orange Pi Zero 2W** equipped with a 2.13-inch e-Paper HAT.
 
-## 🍊 Orange Pi Zero 2W Optimized
+## 🍊 Optimized for Orange Pi Zero 2W
 
-This branch is optimized for **Orange Pi Zero 2W** with the following specifications:
-- **SoC**: Allwinner H618 Quad-core Cortex-A53
-- **RAM**: 4GB DDR4 (also supports 1GB/1.5GB/2GB variants)
-- **Architecture**: ARM64 (aarch64)
-- **OS**: Debian GNU/Linux 12 (bookworm)
-- **Kernel**: Linux 6.1.31-sun50iw9
-
-### Performance Improvements over Raspberry Pi Zero W
-| Feature | RPi Zero W | Orange Pi Zero 2W |
-|---------|------------|-------------------|
-| CPU | 1GHz single-core | 1.5GHz quad-core |
-| RAM | 512MB | Up to 4GB |
-| Architecture | 32-bit | 64-bit |
-| Scanning Speed | Baseline | ~4x faster |
+| Specification | Details |
+|--------------|---------|
+| **SoC** | Allwinner H618 Quad-core Cortex-A53 |
+| **RAM** | 4GB DDR4 |
+| **Architecture** | ARM64 (aarch64) |
+| **OS** | Debian GNU/Linux 12 (bookworm) |
+| **Kernel** | Linux 6.1.31-sun50iw9 |
 
 ## 📚 Table of Contents
 
@@ -61,48 +54,33 @@ The e-Paper HAT display and web interface make it easy to monitor and interact w
 - **File Stealing**: Extracts data from vulnerable services.
 - **User Interface**: Real-time display on the e-Paper HAT and web interface for monitoring and interaction.
 
-![Bjorn Display](https://github.com/infinition/Bjorn/assets/37984399/bcad830d-77d6-4f3e-833d-473eadd33921)
+![Bjorn Display](https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/assets/37984399/bcad830d-77d6-4f3e-833d-473eadd33921)
 
 ## 🚀 Getting Started
 
 ## 📌 Prerequisites
 
-### 📋 Prerequisites for Orange Pi Zero 2W (64-bit) - **Recommended**
+### Hardware Requirements
 
-<p align="center">
-  <img src="https://www.orangepi.org/img/zero2w.png" alt="Orange Pi Zero 2W" width="200">
-</p>
+| Component | Requirement |
+|-----------|-------------|
+| **Board** | Orange Pi Zero 2W |
+| **RAM** | 1GB minimum, 4GB recommended |
+| **Storage** | 16GB+ microSD (Class 10) |
+| **Display** | 2.13-inch e-Paper HAT (V2/V3/V4) or 2.7-inch |
 
-- **Hardware**: Orange Pi Zero 2W (1GB/1.5GB/2GB/4GB RAM)
-- **Operating System**: 
-  - Debian GNU/Linux 12 (bookworm)
-  - Armbian (recommended alternative)
-- **Kernel**: Linux 6.1.31-sun50iw9 or compatible
-- **Username and hostname**: Set to `bjorn` (recommended)
-- **Display**: 2.13-inch e-Paper HAT connected to GPIO pins
+### Software Requirements
 
-**Why Orange Pi Zero 2W?**
-- 🚀 4x faster CPU (Quad-core vs Single-core)
-- 💾 Up to 8x more RAM (4GB vs 512MB)
-- 🔧 Better multitasking for concurrent scans
-- 💰 Similar price point
+| Component | Requirement |
+|-----------|-------------|
+| **OS** | Debian 12 (bookworm) or Armbian |
+| **Kernel** | Linux 6.1.31-sun50iw9 or compatible |
+| **Python** | Python 3.10+ |
+| **Username** | `bjorn` (recommended) |
 
-### 📋 Prerequisites for Raspberry Pi Zero W (32-bit) - Legacy Support
-
-![image](https://github.com/user-attachments/assets/3980ec5f-a8fc-4848-ab25-4356e0529639)
-
-- Raspberry Pi OS installed (32-bit Bookworm)
-- Username and hostname set to `bjorn`
-- 2.13-inch e-Paper HAT connected to GPIO pins
-- **Note**: Use the `requirements_rpi_backup.txt` and `install_bjorn_rpi_backup.sh` for Raspberry Pi
-
-### 📋 Prerequisites for Raspberry Pi Zero W2 (64-bit) - Legacy Support
-
-![image](https://github.com/user-attachments/assets/e8d276be-4cb2-474d-a74d-b5b6704d22f5)
-
-- Raspberry Pi OS installed (64-bit Bookworm)
-- Username and hostname set to `bjorn`
-- 2.13-inch e-Paper HAT connected to GPIO pins
+**Download OS Images:**
+- [Official Orange Pi Debian](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/service-and-support/Orange-Pi-Zero-2W.html)
+- [Armbian for Orange Pi Zero 2W](https://www.armbian.com/orange-pi-zero-2w/) (Recommended)
 
 **Supported e-Paper Displays:**
 - 2.13-inch V1, V2, V3, V4
@@ -110,30 +88,22 @@ The e-Paper HAT display and web interface make it easy to monitor and interact w
 
 ### 🔨 Installation
 
-The fastest way to install Bjorn on **Orange Pi Zero 2W**:
+The fastest way to install Bjorn:
 
 ```bash
 # Download and run the installer
-wget https://raw.githubusercontent.com/infinition/Bjorn/refs/heads/main/install_bjorn.sh
+wget https://raw.githubusercontent.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/refs/heads/main/install_bjorn.sh
 sudo chmod +x install_bjorn.sh && sudo ./install_bjorn.sh
 
-# Choose option 1 for automatic installation
-# Select your e-Paper display version
-# Reboot when prompted
+# Follow the prompts:
+# 1. Choose option 1 for automatic installation
+# 2. Select your e-Paper display version
+# 3. Reboot when prompted
 ```
 
-For **Raspberry Pi** (legacy):
-```bash
-# Use the Raspberry Pi specific files
-wget https://raw.githubusercontent.com/infinition/Bjorn/refs/heads/main/install_bjorn_rpi_backup.sh
-sudo chmod +x install_bjorn_rpi_backup.sh && sudo ./install_bjorn_rpi_backup.sh
-```
+For **detailed information** about installation process go to [Install Guide](INSTALL.md)
 
-For **detailed information** about **installation** process go to:
-- [Orange Pi Migration Guide](ORANGEPI_MIGRATION.md) - **Recommended**
-- [Legacy Install Guide](INSTALL.md) - For Raspberry Pi
-
-## 🔌 GPIO Pin Mapping (Orange Pi Zero 2W)
+## 🔌 GPIO Pin Mapping
 
 ### e-Paper HAT Connection
 
@@ -182,7 +152,7 @@ For **detailed information** about **troubleshooting** go to [Troubleshooting](T
 
 ## 💡 Usage Example
 
-Here's a demonstration of how Bjorn autonomously hunts through your network like a Viking raider (fake demo for illustration):
+Here's a demonstration of how Bjorn autonomously hunts through your network like a Viking raider:
 
 ```bash
 # Reconnaissance Phase
@@ -207,10 +177,7 @@ Here's a demonstration of how Bjorn autonomously hunts through your network like
 [+] Found config files, credentials, backups...
 ```
 
-This is just a demo output - actual results will vary based on your network and target configuration.
-
-All discovered data is automatically organized in the data/output/ directory, viewable through both the e-Paper display (as indicators) and web interface.
-Bjorn works tirelessly, expanding its network knowledge base and growing stronger with each discovery.
+All discovered data is automatically organized in the `data/output/` directory, viewable through both the e-Paper display and web interface.
 
 No constant monitoring needed - just deploy and let Bjorn do what it does best: hunt for vulnerabilities.
 
@@ -232,25 +199,24 @@ python3 -m pytest tests/test_orangepi_migration.py -v
 
 The project welcomes contributions in:
 
-- New attack modules.
-- Bug fixes.
-- Documentation.
-- Feature improvements.
-- **Hardware support for other SBCs (Orange Pi, Banana Pi, etc.)**
+- New attack modules
+- Bug fixes
+- Documentation
+- Feature improvements
 
-For **detailed information** about **contributing** process go to [Contributing Docs](CONTRIBUTING.md), [Code Of Conduct](CODE_OF_CONDUCT.md) and [Development Guide](DEVELOPMENT.md).
+For **detailed information** about **contributing** go to [Contributing Docs](CONTRIBUTING.md), [Code Of Conduct](CODE_OF_CONDUCT.md) and [Development Guide](DEVELOPMENT.md).
 
 ## 📫 Contact
 
-- **Report Issues**: Via GitHub.
+- **Report Issues**: Via GitHub
 - **Guidelines**:
-  - Follow ethical guidelines.
-  - Document reproduction steps.
-  - Provide logs and context.
+  - Follow ethical guidelines
+  - Document reproduction steps
+  - Provide logs and context
   - Include hardware info (Orange Pi model, RAM, OS version)
 
 - **Author**: __infinition__
-- **GitHub**: [infinition/Bjorn](https://github.com/infinition/Bjorn)
+- **GitHub**: [VibeDevOpsing/Bjorn-OPI-Zero2w-Fork](https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork)
 
 ## 🌠 Stargazers
 
@@ -260,27 +226,4 @@ For **detailed information** about **contributing** process go to [Contributing 
 
 ## 📜 License
 
-2024 - Bjorn is distributed under the MIT License. For more details, please refer to the [LICENSE](LICENSE) file included in this repository.
-
----
-
-## 📁 File Structure
-
-```
-Bjorn/
-├── install_bjorn.sh              # Main installer (Orange Pi Zero 2W)
-├── install_bjorn_rpi_backup.sh   # Raspberry Pi installer (legacy)
-├── requirements.txt              # Python dependencies (Orange Pi)
-├── requirements_rpi_backup.txt   # Python dependencies (Raspberry Pi)
-├── resources/
-│   └── waveshare_epd/
-│       ├── epdconfig.py          # e-Paper config (Orange Pi)
-│       ├── epdconfig_rpi_backup.py  # e-Paper config (Raspberry Pi)
-│       └── epd2in13_V*.py        # Display drivers
-├── tests/
-│   ├── test_orangepi_migration.py  # Migration tests
-│   └── conftest.py               # Test fixtures
-├── ORANGEPI_MIGRATION.md         # Detailed migration guide
-├── INSTALL.md                    # Installation guide
-└── README.md                     # This file
-```
+2025 - Bjorn is distributed under the MIT License. For more details, please refer to the [LICENSE](LICENSE) file included in this repository.

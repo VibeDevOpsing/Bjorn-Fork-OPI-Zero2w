@@ -478,7 +478,7 @@ setup_bjorn() {
         echo -e "${GREEN}Using existing BJORN directory${NC}"
     else
         log "INFO" "Cloning BJORN repository"
-        git clone https://github.com/infinition/Bjorn.git
+        git clone https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork.git
         check_success "Cloned BJORN repository"
     fi
 

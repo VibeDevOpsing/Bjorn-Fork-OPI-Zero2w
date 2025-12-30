@@ -197,8 +197,8 @@ Located at `data/netkb.csv`. Stores information about:
 
 **Preview Example:**
 
-![netkb1](https://github.com/infinition/Bjorn/assets/37984399/f641a565-2765-4280-a7d7-5b25c30dcea5)
-![netkb2](https://github.com/infinition/Bjorn/assets/37984399/f08114a2-d7d1-4f50-b1c4-a9939ba66056)
+![netkb1](https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/assets/37984399/f641a565-2765-4280-a7d7-5b25c30dcea5)
+![netkb2](https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/assets/37984399/f08114a2-d7d1-4f50-b1c4-a9939ba66056)
 
 #### Scan Results
 
@@ -207,7 +207,7 @@ This file is generated everytime the network is scanned. It is used to consolida
 
 **Example:**
 
-![Scan result](https://github.com/infinition/Bjorn/assets/37984399/eb4a313a-f90c-4c43-b699-3678271886dc)
+![Scan result](https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/assets/37984399/eb4a313a-f90c-4c43-b699-3678271886dc)
 
 #### Live Status (livestatus.csv)
 

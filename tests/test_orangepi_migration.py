@@ -218,22 +218,12 @@ class TestEPDConfig:
     
     @pytest.fixture
     def epd_config_path(self):
-        # Main epdconfig.py is now the Orange Pi version
         return PROJECT_ROOT / 'resources' / 'waveshare_epd' / 'epdconfig.py'
     
-    @pytest.fixture
-    def rpi_backup_epd_config_path(self):
-        return PROJECT_ROOT / 'resources' / 'waveshare_epd' / 'epdconfig_rpi_backup.py'
-    
-    def test_orangepi_epd_config_exists(self, epd_config_path):
-        """Test Orange Pi EPD config exists (now main epdconfig.py)."""
+    def test_epd_config_exists(self, epd_config_path):
+        """Test EPD config exists."""
         assert epd_config_path.exists()
         assert epd_config_path.is_file()
-    
-    def test_rpi_backup_epd_config_exists(self, rpi_backup_epd_config_path):
-        """Test Raspberry Pi backup EPD config exists."""
-        assert rpi_backup_epd_config_path.exists()
-        assert rpi_backup_epd_config_path.is_file()
     
     def test_orangepi_class_defined(self, epd_config_path):
         """Test OrangePiZero2W class is defined in the config."""
@@ -287,8 +277,7 @@ class TestEPDModules:
             'epd2in13_V3.py',
             'epd2in13_V4.py',
             'epd2in7.py',
-            'epdconfig.py',              # Main is now Orange Pi version
-            'epdconfig_rpi_backup.py',   # Raspberry Pi backup
+            'epdconfig.py',
         ]
         
         for module in expected_modules:
@@ -301,26 +290,18 @@ class TestRequirementsFile:
     
     @pytest.fixture
     def requirements_path(self):
-        # Main requirements.txt is now the Orange Pi version
         return PROJECT_ROOT / 'requirements.txt'
     
-    @pytest.fixture
-    def requirements_rpi_backup_path(self):
-        return PROJECT_ROOT / 'requirements_rpi_backup.txt'
-    
-    def test_orangepi_requirements_exists(self, requirements_path):
-        """Test Orange Pi requirements file exists (now main requirements.txt)."""
+    def test_requirements_exists(self, requirements_path):
+        """Test requirements file exists."""
         assert requirements_path.exists()
         assert requirements_path.is_file()
     
-    def test_orangepi_requirements_no_rpi_gpio(self, requirements_path):
-        """Test Orange Pi requirements doesn't include RPi.GPIO."""
+    def test_requirements_has_opi_gpio(self, requirements_path):
+        """Test requirements includes OPi.GPIO."""
         with open(requirements_path, 'r') as f:
             content = f.read()
         
-        # Should not contain RPi.GPIO
-        assert 'RPi.GPIO' not in content
-        # Should contain OPi.GPIO
         assert 'OPi.GPIO' in content
     
     def test_orangepi_requirements_valid_format(self, requirements_path):
@@ -338,16 +319,11 @@ class TestRequirementsFile:
 
 
 class TestInstallationScript:
-    """Test installation script for Orange Pi."""
+    """Test installation script."""
     
     @pytest.fixture
     def install_script_path(self):
-        # Main install_bjorn.sh is now the Orange Pi version
         return PROJECT_ROOT / 'install_bjorn.sh'
-    
-    @pytest.fixture
-    def install_script_rpi_backup_path(self):
-        return PROJECT_ROOT / 'install_bjorn_rpi_backup.sh'
     
     def test_install_script_exists(self, install_script_path):
         """Test installation script exists."""
