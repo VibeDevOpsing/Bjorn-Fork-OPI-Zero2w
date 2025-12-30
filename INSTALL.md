@@ -46,7 +46,7 @@ The fastest way to install Bjorn:
 
 ```bash
 # Download and run the installer
-wget https://raw.githubusercontent.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/refs/heads/main/install_bjorn.sh
+wget https://raw.githubusercontent.com/VibeDevOpsing/Bjorn-Fork-OPI-Zero2w/refs/heads/main/install_bjorn.sh
 sudo chmod +x install_bjorn.sh
 sudo ./install_bjorn.sh
 
@@ -111,7 +111,7 @@ sudo nmap --script-updatedb
 ```bash
 # Clone the Bjorn repository
 cd /home/bjorn
-git clone https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork.git
+git clone https://github.com/VibeDevOpsing/Bjorn-Fork-OPI-Zero2w.git
 cd Bjorn
 
 # Install Python dependencies

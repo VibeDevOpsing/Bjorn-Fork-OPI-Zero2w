@@ -1,4 +1,4 @@
-# <img src="https://github.com/user-attachments/assets/c5eb4cc1-0c3d-497d-9422-1614651a84ab" alt="thumbnail_IMG_0546" width="33"> Bjorn
+# <img src="https://github.com/user-attachments/assets/c5eb4cc1-0c3d-497d-9422-1614651a84ab" alt="thumbnail_IMG_0546" width="33"> Bjorn OrangePi Zero 2W Fork
 
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)
 ![Status](https://img.shields.io/badge/Status-Development-blue.svg)
@@ -54,7 +54,7 @@ The e-Paper HAT display and web interface make it easy to monitor and interact w
 - **File Stealing**: Extracts data from vulnerable services.
 - **User Interface**: Real-time display on the e-Paper HAT and web interface for monitoring and interaction.
 
-![Bjorn Display](https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/assets/37984399/bcad830d-77d6-4f3e-833d-473eadd33921)
+![Bjorn Display](https://github.com/infinition/Bjorn/assets/37984399/bcad830d-77d6-4f3e-833d-473eadd33921)
 
 ## 🚀 Getting Started
 
@@ -92,7 +92,7 @@ The fastest way to install Bjorn:
 
 ```bash
 # Download and run the installer
-wget https://raw.githubusercontent.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork/refs/heads/main/install_bjorn.sh
+wget https://raw.githubusercontent.com/VibeDevOpsing/Bjorn-Fork-OPI-Zero2w/refs/heads/main/install_bjorn.sh
 sudo chmod +x install_bjorn.sh && sudo ./install_bjorn.sh
 
 # Follow the prompts:
@@ -143,7 +143,7 @@ For **detailed information** about installation process go to [Install Guide](IN
 **Need help? Struggle to find Bjorn's IP after installation?**
 Use the Bjorn Detector & SSH Launcher:
 
-[https://github.com/infinition/bjorn-detector](https://github.com/infinition/bjorn-detector)
+[Bjorn Detector Fork](https://github.com/VibeDevOpsing/Bjorn-Detector-Fork-OPI-Zero2w)
 
 ![ezgif-1-a310f5fe8f](https://github.com/user-attachments/assets/182f82f0-5c3a-48a9-a75e-37b9cfa2263a)
 
@@ -215,12 +215,15 @@ For **detailed information** about **contributing** go to [Contributing Docs](CO
   - Provide logs and context
   - Include hardware info (Orange Pi model, RAM, OS version)
 
-- **Author**: __infinition__
-- **GitHub**: [VibeDevOpsing/Bjorn-OPI-Zero2w-Fork](https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork)
+- **Author**: [VibeDevOpsing](https://github.com/VibeDevOpsing)
+- **GitHub**: [VibeDevOpsing/Bjorn-Fork-OPI-Zero2w](https://github.com/VibeDevOpsing/Bjorn-Fork-OPI-Zero2w)
+
+- **Fork of**: [infinition/Bjorn](https://github.com/infinition/Bjorn)
+- **All credit goes to**: [infinition](https://github.com/infinition)
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=VibeDevOpsing/Bjorn-OPI-Zero2w-Fork&type=date&legend=top-left)](https://www.star-history.com/#VibeDevOpsing/Bjorn-OPI-Zero2w-Fork&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=VibeDevOpsing/Bjorn-Fork-OPI-Zero2w&type=date&legend=top-left)](https://www.star-history.com/#VibeDevOpsing/Bjorn-Fork-OPI-Zero2w&type=date&legend=top-left)
 
 ---
 
