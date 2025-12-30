@@ -218,9 +218,9 @@ For **detailed information** about **contributing** go to [Contributing Docs](CO
 - **Author**: __infinition__
 - **GitHub**: [VibeDevOpsing/Bjorn-OPI-Zero2w-Fork](https://github.com/VibeDevOpsing/Bjorn-OPI-Zero2w-Fork)
 
-## 🌠 Stargazers
+## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=infinition/bjorn&type=Date)](https://star-history.com/#infinition/bjorn&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=VibeDevOpsing/Bjorn-OPI-Zero2w-Fork&type=date&legend=top-left)](https://www.star-history.com/#VibeDevOpsing/Bjorn-OPI-Zero2w-Fork&type=date&legend=top-left)
 
 ---
 
